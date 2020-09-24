@@ -1,0 +1,1 @@
+/Users/zhengjiyuan/Desktop/fifth_grade/operating_system/OS_rCore_Learning/learn_rust/guessing_game/target/debug/guessing_game: /Users/zhengjiyuan/Desktop/fifth_grade/operating_system/OS_rCore_Learning/learn_rust/guessing_game/src/main.rs

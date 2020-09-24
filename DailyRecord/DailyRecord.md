@@ -40,6 +40,22 @@
 
 ### 完成
 
-+ 看[Rust 程序设计语言 简体中文版](https://kaisery.github.io/trpl-zh-cn/)前10小节
-+ 在LeetCode上做了两个easy
++ 看[Rust 程序设计语言 简体中文版](https://kaisery.github.io/trpl-zh-cn/)前8小节
++ 在Mac上安装了rustup, Rust, Cargo
 
+### 收获
+
++ rust工具箱：
+  + rustc - rust compiler，用于编译.rs
+  + rustfmt - 代码格式化（多希望Python也有个这样的，还有js手动加分号强迫症难受死）
+  + rustup - rust安装工具
+  + cargo - 包管理，组织项目（包管理像pip，组织结构像npm，但是快太多了）
++ cargo命令：
+  + cargo new - 创建新项目
+  + cargo build - 生成可执行。加--release生产环境。
+  + cargo run - 生成并运行
+  + cargo check - 快
+
+### 计划
+
+* 明天把书看完
