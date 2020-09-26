@@ -55,7 +55,9 @@
   + cargo build - 生成可执行。加--release生产环境。
   + cargo run - 生成并运行
   + cargo check - 快
+  + cargo update - 升级兼容版本（补丁），大版本要手动改Cargo.toml
 
 ### 计划
 
 * 明天把书看完
+
