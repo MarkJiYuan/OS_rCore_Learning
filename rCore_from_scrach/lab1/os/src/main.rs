@@ -16,8 +16,10 @@
 
 #[macro_use]
 mod console;
+mod interrupt;
 mod panic;
 mod sbi;
+
 
 //entry
 global_asm!(include_str!("entry.asm"));
@@ -60,6 +62,13 @@ pub extern "C" fn rust_main() -> ! {
 pub extern "C" fn rust_main() -> ! {
     println!("Hello, rCore-Tutorial!");
     println!("I have done Lab 0");
+
+    interrupt::init();
+    
+    unsafe {
+        llvm_asm!("ebreak"::::"volatile");
+    };
+
     loop {}
     // panic!("Hi,panic here...")
 }
