@@ -232,6 +232,17 @@
   }
   ~~~
 
++ lab1指导和lab-1的repo中的entry.asm稍微不同，一个是call rust_main，一个是jal rust_main
+
+  ~~~asm
+  ## entry.asm
+  
+  # 目前 _start 的功能：将预留的栈空间写入 $sp，然后跳转至 rust_main
+  _start:
+      la sp, boot_stack_top
+      jal rust_main
+  ~~~
+
 ### 完成
 
 + lab1的复现

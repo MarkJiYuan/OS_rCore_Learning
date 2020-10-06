@@ -61,7 +61,7 @@ pub extern "C" fn rust_main() -> ! {
 #[no_mangle]
 pub extern "C" fn rust_main() -> ! {
     println!("Hello, rCore-Tutorial!");
-    println!("I have done Lab 0");
+    println!("I have done Lab 1");
 
     interrupt::init();
     
@@ -69,8 +69,8 @@ pub extern "C" fn rust_main() -> ! {
         llvm_asm!("ebreak"::::"volatile");
     };
 
-    loop {}
-    // panic!("Hi,panic here...")
+    // loop {}
+    panic!("Hi,panic here...")
 }
 
 
