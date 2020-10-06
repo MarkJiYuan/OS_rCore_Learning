@@ -3,7 +3,7 @@
 // Execute `rustlings hint macros3` for hints :)
 
 // I AM NOT DONE
-
+#[macro_export]
 mod macros {
     macro_rules! my_macro {
         () => {
