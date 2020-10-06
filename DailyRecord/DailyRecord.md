@@ -14,8 +14,8 @@
 
 | Mon                  | Tues                 | Wed                  | Thur                 | Fri                  | Sat                  | Sun                  |
 |----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|
-|                      |                      | 1 <br> ([D1](#1))   | 2 <br> ([2](#2))                  | 3 <br> ([3](#3))                    | 4 <br> ([""4](#4))                   | 5 <br> ([D5](#5))                    |
-| 6 <br> ([D6](#6))                   | 7 <br> ([D7](#7))                   | 8 <br> ([D8](#8))                    | 9 <br> ([D9](#9))| 10 <br> ([D10](#10))  | 11 <br> ([D11](#11)) | 12 <br> ([D12](#12)) |
+|                      |                      | 1   | 2                  | 3                    | 4                   | 5 <br> ([D6](#6))                  |
+| 6 <br> ([D7](#7))                | 7 <br> ([D7](#7))                   | 8 <br> ([D8](#8))                    | 9 <br> ([D9](#9))| 10 <br> ([D10](#10))  | 11 <br> ([D11](#11)) | 12 <br> ([D12](#12)) |
 | 13 <br> ([D13](#13)) | 14 <br> ([D14](#14)) | 15 <br> ([D15](#15)) | 16  <br> ([D16](#16))| 17 <br> ([D17](#17)) | 18 <br> ([D18](#18)) | 19 <br> ([D19](#19)) |
 | 20 <br> ([D20](#20)) | 21 <br> ([D21](#21)) | 22 <br> ([D22](#22))  | 23 <br> ([D23](#23)) | 24 <br> ([D24](#24)) | 25 <br> ([D25](#25)) | 26 <br> ([D26](#26)) |
 | 27 <br> ([D27](#27)) | 28 <br> ([D28](#28)) | 29 <br> ([D29](#29))  | 30 <br> ([D30](#30)) |                      |                      |                      |
@@ -197,29 +197,57 @@
 
 ### 记录
 
-+ branch lab-1的代码直接clone并make run的话，会报错
++ [handler.rs](https://rcore-os.github.io/rCore-Tutorial-deploy/docs/lab-1/guide/part-5.html)没有导入scause，会导致编译错误
 
   ~~~bash
   zhengjiyuandeMacBook-Pro:os zhengjiyuan$ make run
-      Finished dev [unoptimized + debuginfo] target(s) in 0.81s
-  qemu-system-riscv64: -drive file=../user/build/disk.img,format=qcow2,id=sfs: Could not open '../user/build/disk.img': No such file or directory
-  make: *** [qemu] Error 1
+     Compiling os v0.1.0 (/Users/zhengjiyuan/Desktop/fifth_grade/operating_system/OS_rCore_Learning/rCore_from_scrach/lab1/os)
+  error[E0412]: cannot find type `Scause` in this scope
+    --> src/interrupt/handler.rs:28:56
+     |
+  28 | pub fn handle_interrupt(context: &mut Context, scause: Scause, stval: usize) {
+     |                                                        ^^^^^^ not found in this scope
+     |
+  help: consider importing one of these items
+     |
+  1  | use crate::interrupt::handler::scause::Scause;
+     |
+  1  | use riscv::register::scause::Scause;
   ~~~
 
-+ 
+  解决方法：(handler.rs)
+
+  ~~~rust
+  use riscv::register::{
+      scause::{Exception, Interrupt, Scause, Trap},
+      sie, stvec,
+  };
+  ~~~
+
++ 不要忘了改sbi.rs，在sbi中实现set_timer
+
+  ~~~rust
+  pub fn set_timer(time: usize) {
+      sbi_call(SBI_SET_TIMER, time, 0, 0);
+  }
+  ~~~
 
 ### 完成
 
-+ 
++ lab1的复现
 
 ### 收获
 
-+ 
++ 操作系统中断的实现方式
++ RISC-V中断以及Context保存恢复
++ 复制粘贴是不行的，确实需要理解工作的过程
 
 
 ### 计划
 
-+ 
++ 辨析下rust里包的各种层级及引用方式（mod，crate，super，self...）
++ 学习RISC-V
++ 完成lab2
 
 
 
