@@ -157,3 +157,70 @@
 + 把rust小练习完成
 + 开始浏览组成架构
 
+<span id="6"></span>
+
+## Day 6
+
+### 记录
+
++ [no_std]后报错和教程里稍有不一样
++ rust-objdump target/riscv64imac-unknown-none-elf/debug/os -x --arch-name=riscv64 输出内容顺序不太一样
++ Makefile 那一步会报错：Makefile:16: *** missing separator.  Stop. 是因为makefile里的指令需要用tab而不是空格。四个空格不会被认为成是一个tab。文档里直接复制出来是空格。
+
+### 完成
+
++ 创建内核基础项目，不依赖操作系统的项目构建
++ 安装binutils工具集
++ 使用链接脚本来指定内存布局
++ 最终完成lab0
+
+### 收获
+
++ 在Rust中Panic需要handler来处理
++ 从不返回的函数是发散函数，发散函数的返回类型称作Never，记为！
++ 堆栈展开
++ 运行时系统。main函数并不是实际执行的第一个函数。C语言的crt0
++ rustc --version --verbose 查看宿主系统。我的是x86_64-apple-darwin
++ rust-objdump -x查看元程序，-d进行反汇编
++ RISC-V 共有 3 种特权级，分别是 U Mode（User / Application 模式）、S Mode（Supervisor 模式）和 M Mode（Machine 模式）。
++ QEMU 可以使用 ctrl+a （macOS 为 control+a） 再按下 x 键退出。
++ 内联汇编（Inline Assembly）
+
+
+### 计划
+
++ 完成lab1
+
+<span id="7"></span>
+
+## Day 7
+
+### 记录
+
++ branch lab-1的代码直接clone并make run的话，会报错
+
+  ~~~bash
+  zhengjiyuandeMacBook-Pro:os zhengjiyuan$ make run
+      Finished dev [unoptimized + debuginfo] target(s) in 0.81s
+  qemu-system-riscv64: -drive file=../user/build/disk.img,format=qcow2,id=sfs: Could not open '../user/build/disk.img': No such file or directory
+  make: *** [qemu] Error 1
+  ~~~
+
++ 
+
+### 完成
+
++ 
+
+### 收获
+
++ 
+
+
+### 计划
+
++ 
+
+
+
+
